@@ -1,0 +1,23 @@
+{
+  "name": "continuous-integration",
+  "version": "1.0.0",
+  "description": "This is a test repo where we test GHA CI workflows.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "continuous integration",
+    "CI"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dr-bizz/test-ci.git"
+  },
+  "author": "Bizz Websites",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dr-bizz/test-ci/issues"
+  },
+  "homepage": "https://github.com/dr-bizz/test-ci#readme"
+}
