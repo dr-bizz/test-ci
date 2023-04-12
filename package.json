@@ -1,6 +1,6 @@
 {
   "name": "continuous-integration",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "This is a test repo where we test GHA CI workflows.",
   "main": "index.js",
   "scripts": {
