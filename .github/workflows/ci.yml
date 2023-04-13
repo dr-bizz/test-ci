@@ -17,3 +17,30 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  slackNotification:
+    name: Slack Notification
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          node-version: 7
+          payload: |
+            {
+              "text": "Cru Payments release ${{ github.event.release.tag_name }} : ${{ job.status }}\n${{ github.event.release.html_url || github.event.head_commit.url }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Cru Payments release ${{ github.event.release.tag_name }} : ${{ job.status }}\n${{ github.event.release.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
