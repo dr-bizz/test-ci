@@ -15,7 +15,6 @@ jobs:
           node-version: 16
           registry-url: "https://registry.npmjs.org"
       - name: 📦 Install Dependencies
-        run: yarn set version berry
         run: yarn install --immutable --immutable-cache
       - name: 👤 Configure git
         run: |
