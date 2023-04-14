@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
     name: Deploy to NPM
-    needs: [test]
     steps:
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
