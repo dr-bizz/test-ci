@@ -1,7 +1,21 @@
 name: Publish Package to npmjs
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   release:
     types: [published]
+  workflow_dispatch:
+  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write
+  contents: write
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
