@@ -1,0 +1,14 @@
+name: label-probe
+on:
+  pull_request:
+    types: [labeled, unlabeled, opened, synchronize]
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump label payload
+        run: |
+          echo "ACTION=${{ github.event.action }}"
+          echo "EVENT_LABEL=${{ github.event.label.name }}"
+          echo "LABELS_JSON=${{ toJSON(github.event.pull_request.labels.*.name) }}"
+          echo "CONTAINS_PROBE=${{ contains(github.event.pull_request.labels.*.name, 'probe-block') }}"
